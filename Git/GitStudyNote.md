@@ -140,3 +140,53 @@ git merge 分支名  把指定分支合并到当前分支上
 
 
 
+## 4.Github
+
+[MyGithub](https://github.com/zhao-zihan/coding2022/blob/master/Git/GitStudyNote.md)
+
+### 4.1Create & name a new repository
+
+```git
+git remote -v  check version
+git remote add (name) (http/ssh)  add name to the quoted repository, better keep the same name with the repository
+```
+
+
+
+![image-20220130210337514](images/image-20220130210337514.png)
+
+![image-20220130210514540](images/image-20220130210514540.png)
+
+
+
+### 4.2 Push repository to remote
+
+```git
+git add folder
+commit
+git push -u origin master
+git pull origin master
+```
+
+![image-20220130212216944](images/image-20220130212216944.png)
+
+
+
+### 4.3 克隆代码
+
+```git
+git clone address
+```
+
+
+
+### 4.4 ssh免密协议
+
+```git
+under user-username click git bush 
+ssh-keygen -t rsa -C email
+cd to the new ssh folder
+cat open the pub key
+copy & paste it onto github
+```
+
