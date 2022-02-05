@@ -96,8 +96,82 @@ pay attention:
 
   ![Data types in Java - GeeksforGeeks](https://media.geeksforgeeks.org/wp-content/cdn-uploads/20191105111644/Data-types-in-Java.jpg)
 
-  
+  ![image-20220204212336302](images/image-20220204212336302.png)
 
-  
+#### 3.2 primitive types
 
-  
+##### 3.2.1 Integer: byte, short, int, long
+
+![image-20220204212919520](images/image-20220204212919520.png)
+
+##### 3.2.2 floating-point: float, double
+
+![image-20220204213241137](images/image-20220204213241137.png)
+
+##### 3.2.3 character value
+
+![image-20220204213735899](images/image-20220204213735899.png)
+
+- defined between a single quotation '' for declaring a character or as a escape character such as '\n', '\t' (tab) 
+
+##### 3.2.4 boolean type
+
+![image-20220204214543701](images/image-20220204214543701.png)
+
+- ```java
+  /*
+  \\n will display \n in the context
+  \" stress\" will display "stress"
+  */
+  ```
+
+#### 3.3 computation rules
+
+##### 3.3.1 type coercion
+
+![image-20220204215419971](images/image-20220204215419971.png)
+
+
+
+##### 3.3.2 type cast
+
+![image-20220204221358282](images/image-20220204221358282.png)
+
+```java
+short s = 5;
+s = s-2; //判断：no
+byte b = 3;
+b = b + 4;//判断：no
+b = (byte)(b+4);//判断：yes
+char c = ‘a’;
+int i = 5;
+float d = .314F;
+double result = c+i+d; //判断：yes
+byte b = 5;
+short s = 3;
+short t = s + b;//判断：no
+
+
+//1. 编码情况
+//数小时可以不加L，引文int < long
+//但过大时需注明L结尾
+long l = 123456;
+System.out.println(l);
+//编译失败：过大的整数
+//long l1 = 452367894586235;
+long l1 = 452367894586235L;
+
+//**************************
+//编译失败
+//float f1 = 12.3;
+		
+//2. 编码情况2:
+//整型变量，默认类型为int型
+//浮点型变量，默认类型为double型，所以float必须加F注明，d
+byte b = 12;
+byte b1 = b + 1;	//编译失败
+		
+float f1 = b + 12.3;	//编译失败
+	
+```
+
