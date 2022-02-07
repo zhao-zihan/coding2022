@@ -301,3 +301,144 @@ class LogicTest{
 
 ```
 
+#### 1.1.5 位运算符/bitwise operators
+
+![image-20220207144920098](images/image-20220207144920098.png)
+
+![image-20220207145827458](images/image-20220207145827458.png)
+
+![image-20220207145719005](images/image-20220207145719005.png)
+
+- 左移几位就相当于原数乘上2的几次幂
+
+![image-20220207150042813](images/image-20220207150042813.png)
+
+- 1=true，0=false
+- & 上下都是1时会得1，有0就是0
+- | 只要有1就是1
+- ^ 只要上下不一样就是1
+
+```java
+/*
+运算符之五：位运算符(了解)
+
+结论：
+1.位运算符操作的都是整型的数据变量
+2.<< : 在一定范围内，每向左移一位，相当于 * 2
+  >> : 在一定范围内，每向右移一位，相当于 / 2
+3.复数同理
+面试题：最高效的计算2 * 8 ？	2 << 3 或 8 << 1
+*/
+class BitTest{
+	public static void main(String[] args){
+		int i = 21;
+//		i = -21;
+		System.out.println("i << 2 :" + (i << 2));//84 = 21 * 2 ^ 2
+		System.out.println("i << 3 :" + (i << 3));//168 = 21 * 2 ^ 3
+		System.out.println("i << 20 :" + (i << 20));
+		System.out.println("i << 27 :" + (i << 27));//-1476395008 最高位为1了
+        
+        
+		int m = 12;
+		int n = 5;
+		System.out.println("m & n :" + (m & n));//4
+		System.out.println("m & n :" + (m | n));//13
+		System.out.println("m & n :" + (m ^ n));//9
+        
+        
+		//练习：交换两个变量的值
+		int num1 = 10;
+		int num2 = 20;
+
+		//方式一：定义临时变量
+	//	int tent = num1;
+	//	num1 = num2;
+	//	num2 = tent;
+
+		//方式二：
+		//好处：不用定义临时变量
+		//弊端：①相加可能超出存储范围 ② 有局限性：只适用于数值类型
+//		num1 = num1 + num2;
+//		num2 = num1 - num2;
+//		num1 = num1 - num2;
+
+		//方式三：使用位运算
+		num1 = num1 ^ num2;
+		num2 = num1 ^ num2;
+		num1 = num1 ^ num2;
+        
+        m1 = 13;
+        n1 = 5;
+        m1 ^ n1 = 8;
+        8 ^ n1 = 8 ^ 5 = 13 = m1;
+
+		System.out.println("num1 = " + num1 + ",num2 = " + num2);
+	}
+}
+
+```
+
+#### 1.1.6 三元运算符/ternary operator
+
+![image-20220207151042947](images/image-20220207151042947.png)
+
+```java
+/*
+运算符之六：三元运算符
+1.结构：(条件表达式)？表达式1 : 表达式2
+2. 说明
+① 条件表达式的结果为boolean类型
+② 根据条件表达式真或假，决定执行表达式1，还是表达式2.
+  如果表达式为true,则执行表达式1
+  如果表达式为false,则执行表达式2
+③ 表达式1 和表达式2要求是一致的。
+④ 三元运算符是可以嵌套的
+3. 凡是可以使用三元运算的地方，都是可以改写if-else。
+   反之，则不一定成立！！！
+   二者都行时用三元
+*/
+class SanTest{
+	public static void main(String[] args) {
+		//获取两个整数的最大值
+		int m = 12;
+		int n = 5;
+		int max = (m > n)? m : n;
+		System.out.println(max);//12
+
+		double num = (m > n) ? 2 : 1.0;//表达式1和2需要能统一为一个类型
+		//(m > n) ? 2 : "n大";	//编译错误
+
+		//****************************************
+		String str = (m > n) ? "m大" : ((m == n)? "m和n相等" : "n大");//嵌套
+		System.out.println(str);
+
+		//****************************************
+		//获取三个数中的最大值
+		int n1 = 12;
+		int n2 = 30;
+		int n3 = -43;
+
+		int max1 = (n1 > n2) ? n1 : n2;
+		int max2 = (max1 > n3) ? max1 : n3;
+		System.out.println("三个数中的最大值是：" + max2);
+
+		//此方法：pass，可读性太差
+		int max3 = (((n1 > n2)? n1 : n2) > n3) ?((n1 > n2) ? n1 : n2) : n3;
+		System.out.println("三个数中的最大值是：" + max3);
+
+		//改写成if-else
+		if(m > n){
+			System.out.println(m);
+		}else{
+			System.out.println(n);
+		}
+	}
+}
+
+```
+
+### 1.2 运算优先级
+
+![image-20220207152449419](images/image-20220207152449419.png)
+
+- 谨记加（）解决一切烦恼
